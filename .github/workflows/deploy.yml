@@ -20,11 +20,10 @@ jobs:
 
       - name: Set up SSH
         run: |
-          mkdir -p ~/.ssh
-          echo -e "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan 164.92.75.149 >> ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.txt
+          chmod 600 key.txt
+          ssh-keyscan -t rsa 164.92.75.149 >> ~/.ssh/known_hosts
 
       - name: Deploy to VM
         run: |
-          ssh -v -o StrictHostKeyChecking=no -i /home/lms/.ssh/id_rsa lms@164.92.75.149 'cd /app/lms.jar && docker-compose up -d'
+          ssh -p 22 lms@164.92.75.149 -i key.txt -o StrictHostKeyChecking=no 'cd /app/lms.jar && docker-compose up -d'
