@@ -25,4 +25,4 @@ jobs:
 
       - name: Deploy to VM
         run: |
-          ssh -p 22 lms@164.92.75.149 -i key.txt -o StrictHostKeyChecking=no 'echo "lms" | sudo -S mkdir -p /app && sudo -S chown lms:lmsgroup /app && cd /app && docker-compose up -d'
+          ssh -p 22 lms@164.92.75.149 -i key.txt -o StrictHostKeyChecking=no 'echo "lms" | sudo -S mkdir -p /app && sudo -S chown lms:lms-group /app && cd /app && docker-compose up -d'
