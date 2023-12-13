@@ -1,0 +1,28 @@
+name: Deploy to VM
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: actions/setup-ssh@v2
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to VM
+        run: |
+          ssh -o StrictHostKeyChecking=no lms@164.92.75.149 'cd /app/lms.jar && docker-compose up -d'
