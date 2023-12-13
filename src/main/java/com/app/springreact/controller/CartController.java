@@ -19,6 +19,7 @@ public class CartController {
 
     @PostMapping
     public CartResponse updateCart(CartRequest request) {
+        System.out.println("requesT: " + request);
         return cartService.updateCart(request);
     };
 }
