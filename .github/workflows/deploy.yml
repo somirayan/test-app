@@ -20,4 +20,4 @@ jobs:
 
       - name: Deploy to VM
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} lms@164.92.75.149 'cd /app/lms.jar && docker-compose up -d'
+          ssh -o StrictHostKeyChecking=no lms@164.92.75.149 'cd /app/lms.jar && docker-compose up -d'
