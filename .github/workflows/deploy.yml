@@ -23,5 +23,5 @@ jobs:
 
       - name: Deploy to VM
         run: |
-          ssh -p 22 lms@164.92.75.149 -i key.txt -o StrictHostKeyChecking=no 'echo "lms" | sudo -S rm -rf /app/test-app && sudo -S mkdir -p /app && sudo -S chown lms:lms-group /app && cd /app && git clone https://github.com/somirayan/test-app.git && cd test-app && ./deploy.sh'
+          ssh -v -p 22 lms@164.92.75.149 -i key.txt -o StrictHostKeyChecking=no 'echo "lms" | sudo -S rm -rf /app/test-app && sudo -S mkdir -p /app && sudo -S chown lms:lms-group /app && cd /app && git clone https://github.com/somirayan/test-app.git && cd test-app && ./deploy.sh'
 
