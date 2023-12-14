@@ -3,9 +3,10 @@
 # Assuming you are in the directory containing Dockerfile
 DOCKERFILE_PATH="/app/test-app/Dockerfile"
 
-# Stop and remove the existing container
 docker stop lms-container || true
-docker rm lms-container || true
+sleep 10  # Wait for 10 seconds
+docker rm -f lms-container || true
+
 
 # Build the Docker image
 docker build -t lms -f "$DOCKERFILE_PATH" .
