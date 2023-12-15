@@ -26,5 +26,5 @@ docker run -d -p 8080:8080 \
    --name lms-container \
    --restart always \
    -v ~/logs:/var/log/app  # Mount the volume here
-   lms
+
 
