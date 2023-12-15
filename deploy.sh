@@ -18,7 +18,7 @@ docker rm lms-container 2>/dev/null
 docker build -t lms -f "$DOCKERFILE_PATH" .
 
 # Create a directory in your home folder
-mkdir ~/logs
+#mkdir ~/logs
 
 # Run the Docker container with the volume mount
 docker run -d -p 8080:8080 \
