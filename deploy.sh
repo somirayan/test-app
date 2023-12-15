@@ -16,15 +16,8 @@ docker rm lms-container 2>/dev/null
 
 # Build and run the Docker container with restart policy
 docker build -t lms -f "$DOCKERFILE_PATH" .
-
-# Create a directory in your home folder
-#mkdir ~/logs
-
-# Run the Docker container with the volume mount
 docker run -d -p 8080:8080 \
-   --env SPRING_PROFILES_ACTIVE=prod \
-   --name lms-container \
-   --restart always \
-   -v ~/logs:/var/log/app  # Mount the volume here
-
-
+    --env SPRING_PROFILES_ACTIVE=prod \
+    --name lms-container \
+    --restart always \
+    lms
